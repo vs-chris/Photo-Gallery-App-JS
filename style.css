@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    padding: 5px;
+    position: relative;
+}
+
+.photo-app {
+    display: flex;
+    overflow: hidden;
+    margin: 50px calc(100% - 1450px) auto;
+    overflow-y: hidden;
+    scroll-behavior:smooth;
+    scroll-snap-type: x mandatory;
+}
+
+.photo-app div {
+    width: 400px;
+    height: 600px;
+    border-radius: 8px;
+    background-color: #fff ;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.171), -3px -3px 8px rgba(0, 0, 0, 0.03) ;
+    flex: none;
+    padding: 20px;
+    margin: 20px;
+    scroll-snap-align: center;
+}
+
+.photo-app div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.buttons button {
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.buttons button .fa-backward {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    background-clip: text;
+    color: black;
+    animation: bounce-backward 1s infinite alternate;
+    transition: 0.5s;
+}
+
+.buttons button .fa-forward {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    background-clip: text;
+    color: black;
+    transition: 0.5s;
+    animation: bounce-forward 1s infinite alternate;
+}
+
+.buttons button .fa-forward:hover {
+    right: calc(5% - 5px);
+    animation: colorchange 1s infinite alternate,  bounce-forward 1s infinite alternate;
+    color: transparent;
+    background-image: linear-gradient(to right, #13A0EC, rgb(136, 237, 241));
+    background-size: 200% 200%;
+}
+
+.buttons button .fa-backward:hover {
+    left: calc(5% - 5px);
+    animation: colorchange 1s infinite alternate, bounce-backward 1s infinite alternate;
+    color: transparent;
+    background-image: linear-gradient(to right, #13A0EC, rgb(136, 237, 241));
+    background-size: 200% 200%;
+
+}
+
+@keyframes colorchange {
+    from {
+        background-position: 0% 100%;
+    }
+    to {
+        background-position: 100% 0%;
+    }
+}
+
+@keyframes bounce-backward {
+    from {
+        left: calc(5% - 5px - 2px);
+    }
+    to {
+        left: calc(5% - 5px + 2px);
+    }
+}
+
+@keyframes bounce-forward {
+    from {
+        right: calc(5% - 5px - 2px);
+    }
+    to {
+        right: calc(5% - 5px + 2px);
+    }
+}
